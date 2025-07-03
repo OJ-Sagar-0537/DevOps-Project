@@ -1,16 +1,27 @@
-name: cd-develop.yaml
+name: cd-develop
+
 on:
   push:
     branches: [develop]
+
+permissions:
+  contents: write        
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: development-env
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Deploy to development environment
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages (dev)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           destination_dir: dev
+          keep_files: true
