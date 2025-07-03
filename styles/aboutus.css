@@ -1,0 +1,71 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+a {
+  color: #00796b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #004d40;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* About sections */
+.about-section {
+  margin-bottom: 2.5rem;
+}
+
+.about-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #00695c;
+}
+
+.about-section p {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Footer */
+footer {
+  background-color: #e0f2f1;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
