@@ -1,28 +1,32 @@
-# File: .github/workflows/ci-develop.yaml
-name: CI Lint & Test (Develop)
+name: ci-develop
 
 on:
-  push:
-    branches: [develop]
   pull_request:
-    branches: [develop]
+    branches:
+      - develop 
+    types:
+      - opened
+      - synchronize
 
 jobs:
-  lint:
+  lint-develop-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository On the Runner
         uses: actions/checkout@v4
 
-      - name: Install HTMLHint and Stylelint
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y npm
-          npm install -g htmlhint stylelint stylelint-config-standard
+      - name: Lint HTML Files With HTMLHint
+        run: npx htmlhint "**/*.html"
 
-      - name: Run HTMLHint
-        run: htmlhint "**/*.html"
+      - name: Lint CSS Files With Stylelint
+        run: npx stylelint "**/*.css"
 
-      - name: Run Stylelint
-        run: stylelint "**/*.css"
+      - name: Build Website With Parcel
+        run: npx parcel build "./src/*.html" --dist-dir "./dist"
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-dist
+          path: ./dist
