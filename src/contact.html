@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | TravelEase</title>
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+  <main>
+    <h1>Contact Us</h1>
+    <section class="contact-details">
+      <p>Email: <a href="mailto:info@travelease.pk">info@travelease.pk</a></p>
+      <p>WhatsApp: <a href="https://wa.me/923001234567">+92 300 1234567</a></p>
+      <p>Office Address: Main Bazaar, Gilgit, Pakistan</p>
+      <p>Office Hours: Mon–Sat, 9am–6pm</p>
+      <div class="social-links">
+        <a href="https://facebook.com/travelease">Facebook</a> |
+        <a href="https://instagram.com/travelease">Instagram</a> |
+        <a href="https://youtube.com/travelease">YouTube</a>
+      </div>
+    </section>
+    <section class="contact-form-section">
+      <h2>Send us a Message</h2>
+      <form id="contactForm" novalidate>
+        <label>Name: <input type="text" name="name" required></label>
+        <label>Email: <input type="email" name="email" required></label>
+        <label>Subject: <input type="text" name="subject" required></label>
+        <label>Message: <textarea name="message" required></textarea></label>
+        <button type="submit">Send</button>
+      </form>
+      <div id="formMessage"></div>
+    </section>
+    <section class="map">
+      <h2>Where to Find Us</h2>
+      <img src="images/gilgit-office-map.jpg" alt="Map of Gilgit with office location" />
+    </section>
+  </main>
+  <script src="js/contact-validation.js"></script>
+</body>
+</html>
