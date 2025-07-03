@@ -1,0 +1,28 @@
+# File: .github/workflows/ci-develop.yaml
+name: CI Lint & Test (Develop)
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install HTMLHint and Stylelint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y npm
+          npm install -g htmlhint stylelint stylelint-config-standard
+
+      - name: Run HTMLHint
+        run: htmlhint "**/*.html"
+
+      - name: Run Stylelint
+        run: stylelint "**/*.css"
