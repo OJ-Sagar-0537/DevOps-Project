@@ -4,22 +4,39 @@ on:
   push:
     branches: [production]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-and-deploy:
+  build:
+    name: Build Website with Parcel
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code to Runner
+      uses: actions/checkout@v4
+    - name: Build website with Parcel
+      run: npx parcel build "./src/*.html" --dist-dir "./dist" --public-url "./dist"
+    - name: Upload build Artifacts to GitHub Pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: "./dist"
+        name: "Build-artifact-production"
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build static site
-        run: npm run build
-
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: "production-env"
+    permissions:
+      pages: write
+      id-token: write
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/deploy-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          artifact_name: "Build-artifact-production"
+          token: "${{github.token}}"
