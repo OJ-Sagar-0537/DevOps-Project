@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "color-no-invalid-hex": true,
+    "font-family-no-duplicate-names": true,
+    "block-no-empty": true,
+    "unit-allowed-list": ["em", "rem", "%", "px", "vh", "vw"],
+    "declaration-block-no-duplicate-properties": true,
+    "selector-max-id": 0,
+    "indentation": 2,
+    "string-quotes": "double",
+    "no-extra-semicolons": true,
+    "number-leading-zero": "always"
+  }
+}
